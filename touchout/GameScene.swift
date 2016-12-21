@@ -5,30 +5,44 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
-    private let WIDTH = 1024
-    private let HEIGHT = 768
-    private var ballNode : SKSpriteNode?
-    private var paddleNode : SKSpriteNode?
-    private var borderNode : SKNode?
-    private var abyssNode : SKNode?
-
     private struct CategoriesStruct {
         let ball : UInt32 = 0b1 << 0
         let border : UInt32 = 0b1 << 1
         let paddle : UInt32 = 0b1 << 2
         let abyss : UInt32 = 0b1 << 3
     }
-
     private let Categories = CategoriesStruct()
+    // TODO hardcoding
+    private let WIDTH = 1024
+    private let HEIGHT = 768
+    private var ballNode : SKSpriteNode?
+    private var paddleNode : SKSpriteNode?
+    private var fingerNode : SKNode?
+    private var borderNode : SKNode?
+    private var abyssNode : SKNode?
+    private var trackingArea : NSTrackingArea?
 
     override func didMove(to view: SKView) {
+        self.initEventsHandling()
         self.initPhysics()
         self.initBorders()
         self.initBall()
         self.initPaddle()
         self.initCollision()
+    }
 
-        view.addTrackingArea(NSTrackingArea(rect: view.frame, options: [NSTrackingAreaOptions.mouseMoved, NSTrackingAreaOptions.activeInKeyWindow], owner: self, userInfo: nil))
+    override func willMove(from view: SKView) {
+        self.removeEventsHandling()
+    }
+
+    private func initEventsHandling(){
+        // init tracking area
+        self.trackingArea = NSTrackingArea(rect: (view?.frame)!, options: [NSTrackingAreaOptions.mouseMoved, NSTrackingAreaOptions.activeInKeyWindow], owner: self, userInfo: nil)
+        view?.addTrackingArea(self.trackingArea!)
+    }
+
+    private func removeEventsHandling(){
+        view?.removeTrackingArea(self.trackingArea!)
     }
 
     private func initPhysics(){
@@ -60,12 +74,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func initBall(){
-        self.ballNode = self.childNode(withName: "ballNode") as? SKSpriteNode
+        self.ballNode = self.childNode(withName: "//ballNode") as? SKSpriteNode // TODO optimize node searching
         self.ballNode?.physicsBody!.applyImpulse(CGVector(dx: 200, dy: 200))
     }
 
     private func initPaddle(){
-        self.paddleNode = self.childNode(withName: "paddleNode") as? SKSpriteNode
+        // paddle node
+        self.paddleNode = self.childNode(withName: "//paddleNode") as? SKSpriteNode // TODO optimize node searching
+        let paddle = self.paddleNode!
+        // finger node & physics body
+        self.fingerNode = self.childNode(withName: "//fingerNode") // TODO optimize node searching
+        let finger = self.fingerNode!
+        finger.position = paddle.position
+//        finger.physicsBody = SKPhysicsBody()
+//        finger.physicsBody?.friction = 0
+//        finger.physicsBody?.restitution = 1
+//        finger.physicsBody?.linearDamping = 0
+//        finger.physicsBody?.angularDamping = 0
     }
     
     private func initCollision(){
@@ -78,19 +103,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.ballNode?.physicsBody?.contactTestBitMask = Categories.abyss
     }
 
-    override func keyDown(with event: NSEvent) {
-        let paddleLeftAction = SKAction.moveBy(x: -50, y: 0, duration: 1)
-        let paddleRightAction = SKAction.moveBy(x: 50, y: 0, duration: 1)
-
-        switch event.keyCode {
+    override func mouseMoved(with event: NSEvent) {
         // TODO hardcoding
-        case 123:
-            self.paddleNode?.run(paddleLeftAction)
-        case 124:
-            self.paddleNode?.run(paddleRightAction)
-        default:
-            break
-        }
+
+        let touchingPos = event.location(in: self)
+
+        // paddle moving
+        let paddlePos = self.paddleNode!.position
+        
+        //   move abstract finger node
+        self.fingerNode?.position.x = touchingPos.x
+
+//        if (touchingPos.x < paddlePos.x) {
+//        } else if (touchingPos.x > paddlePos.x) {
+//        }
+        self.paddleNode?.position.x = (self.fingerNode?.position.x)!
     }
 
     func didBegin(_ contact: SKPhysicsContact) {

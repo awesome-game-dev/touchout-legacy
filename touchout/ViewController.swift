@@ -21,7 +21,7 @@ class ViewController: NSViewController {
             let menuScene = SKScene(fileNamed: "MenuScene")!
             menuScene.scaleMode = .aspectFit
             view.presentScene(menuScene)
-            
+
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true

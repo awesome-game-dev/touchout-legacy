@@ -2,6 +2,9 @@ import SpriteKit
 //import GameplayKit
 
 class MenuScene: SKScene {
+    override func didMove(to view: SKView) {
+    }
+
     override func mouseUp(with event: NSEvent) {
         let gameScene = SKScene(fileNamed: "GameScene")!
         gameScene.scaleMode = .aspectFit
