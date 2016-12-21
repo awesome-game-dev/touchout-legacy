@@ -1,14 +1,6 @@
-//
-//  ViewController.swift
-//  touchout
-//
-//  Created by Nano WANG on 12/19/16.
-//  Copyright © 2016 Nano WANG. All rights reserved.
-//
-
 import Cocoa
 import SpriteKit
-import GameplayKit
+//import GameplayKit
 
 class ViewController: NSViewController {
 
@@ -27,6 +19,29 @@ class ViewController: NSViewController {
             view.showsFPS = true
             view.showsNodeCount = true
             view.showsPhysics = true
+        }
+    }
+}
+
+@available(OSX 10.12.2, *)
+extension ViewController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .menuBar
+        touchBar.defaultItemIdentifiers = [.menuBarStartBtn]
+        touchBar.customizationAllowedItemIdentifiers = [.menuBarStartBtn]
+        return touchBar
+    }
+
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItemIdentifier.menuBarStartBtn:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSButton(title: "Start", target: self, action: nil)
+            return customViewItem
+        default:
+            return nil
         }
     }
 }

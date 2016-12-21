@@ -14,6 +14,8 @@
 		3EBF1F831E07C6A900534A0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBF1F821E07C6A900534A0F /* ViewController.swift */; };
 		3EBF1F851E07C6A900534A0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBF1F841E07C6A900534A0F /* Assets.xcassets */; };
 		3EBF1F881E07C6A900534A0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBF1F861E07C6A900534A0F /* Main.storyboard */; };
+		3ED0D4821E0AA5C100ACA851 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0D4811E0AA5C100ACA851 /* WindowController.swift */; };
+		3ED0D4841E0AA92E00ACA851 /* TouchBarIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0D4831E0AA92E00ACA851 /* TouchBarIdentifiers.swift */; };
 		3EE748321E091A940074A1C2 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3EE748311E091A940074A1C2 /* MenuScene.sks */; };
 		3EE748341E091AB30074A1C2 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE748331E091AB30074A1C2 /* MenuScene.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		3EBF1F841E07C6A900534A0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EBF1F871E07C6A900534A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EBF1F891E07C6A900534A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ED0D4811E0AA5C100ACA851 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		3ED0D4831E0AA92E00ACA851 /* TouchBarIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarIdentifiers.swift; sourceTree = "<group>"; };
 		3EE748311E091A940074A1C2 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		3EE748331E091AB30074A1C2 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,9 +70,11 @@
 				3EBF1F7A1E07C6A900534A0F /* AppDelegate.swift */,
 				3EBF1F7E1E07C6A900534A0F /* Actions.sks */,
 				3EBF1F821E07C6A900534A0F /* ViewController.swift */,
+				3ED0D4811E0AA5C100ACA851 /* WindowController.swift */,
 				3EBF1F841E07C6A900534A0F /* Assets.xcassets */,
 				3EBF1F861E07C6A900534A0F /* Main.storyboard */,
 				3EBF1F891E07C6A900534A0F /* Info.plist */,
+				3ED0D4831E0AA92E00ACA851 /* TouchBarIdentifiers.swift */,
 			);
 			path = touchout;
 			sourceTree = "<group>";
@@ -159,8 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EBF1F831E07C6A900534A0F /* ViewController.swift in Sources */,
+				3ED0D4821E0AA5C100ACA851 /* WindowController.swift in Sources */,
 				3EE748341E091AB30074A1C2 /* MenuScene.swift in Sources */,
 				3EBF1F811E07C6A900534A0F /* GameScene.swift in Sources */,
+				3ED0D4841E0AA92E00ACA851 /* TouchBarIdentifiers.swift in Sources */,
 				3EBF1F7B1E07C6A900534A0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +284,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = touchout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.stories-game-studio.touchout";
+				PRODUCT_BUNDLE_IDENTIFIER = com.storiesGameStudio.touchout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -289,7 +297,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = touchout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.stories-game-studio.touchout";
+				PRODUCT_BUNDLE_IDENTIFIER = com.storiesGameStudio.touchout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -22,27 +22,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var abyssNode : SKNode?
     private var trackingArea : NSTrackingArea?
 
+    private var touchBarEnabled = true
+    private var mouseEnabled = true
+
     override func didMove(to view: SKView) {
-        self.initEventsHandling()
-        self.initPhysics()
-        self.initBorders()
-        self.initBall()
-        self.initPaddle()
-        self.initCollision()
+        initEventsHandling()
+        initPhysics()
+        initBorders()
+        initBall()
+        initPaddle()
+        initCollision()
     }
 
     override func willMove(from view: SKView) {
-        self.removeEventsHandling()
+        destroyEventsHandling()
     }
 
     private func initEventsHandling(){
-        // init tracking area
-        self.trackingArea = NSTrackingArea(rect: (view?.frame)!, options: [NSTrackingAreaOptions.mouseMoved, NSTrackingAreaOptions.activeInKeyWindow], owner: self, userInfo: nil)
-        view?.addTrackingArea(self.trackingArea!)
+        if mouseEnabled {
+            initTrackingArea()
+        }
+        if touchBarEnabled {
+            initTouchBar()
+        }
     }
 
-    private func removeEventsHandling(){
-        view?.removeTrackingArea(self.trackingArea!)
+    private func initTrackingArea(){
+        self.trackingArea = NSTrackingArea(rect: (view?.frame)!, options: [NSTrackingAreaOptions.mouseMoved, NSTrackingAreaOptions.activeInKeyWindow], owner: self, userInfo: nil)
+        view?.addTrackingArea(trackingArea!)
+    }
+    
+    private func initTouchBar(){
+    }
+
+    private func destroyEventsHandling(){
+        if (self.trackingArea != nil) {
+            view?.removeTrackingArea(self.trackingArea!)
+        }
     }
 
     private func initPhysics(){
@@ -75,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     private func initBall(){
         self.ballNode = self.childNode(withName: "//ballNode") as? SKSpriteNode // TODO optimize node searching
-        self.ballNode?.physicsBody!.applyImpulse(CGVector(dx: 200, dy: 200))
+        self.ballNode?.physicsBody!.applyImpulse(CGVector(dx: 400, dy: 400))
     }
 
     private func initPaddle(){
@@ -109,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchingPos = event.location(in: self)
 
         // paddle moving
-        let paddlePos = self.paddleNode!.position
+//        let paddlePos = self.paddleNode!.position
         
         //   move abstract finger node
         self.fingerNode?.position.x = touchingPos.x
