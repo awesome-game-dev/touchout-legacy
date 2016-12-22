@@ -13,6 +13,6 @@ class MenuScene: SKScene {
         reveal.pausesOutgoingScene = true
         reveal.pausesIncomingScene = true
 
-        self.view?.presentScene(gameScene, transition: reveal)
+        (self.view as! GameView).switchScene(scene: gameScene, transition: reveal)
     }
 }
