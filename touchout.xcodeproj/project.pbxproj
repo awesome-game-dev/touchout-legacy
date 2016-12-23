@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2322B81E0D26800066EED5 /* TouchoutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2322B71E0D26800066EED5 /* TouchoutScene.swift */; };
+		3E2322BA1E0D26B60066EED5 /* TouchoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2322B91E0D26B60066EED5 /* TouchoutView.swift */; };
+		3E7F6F481E0C1B3600D3A0BC /* todo.md in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F6F471E0C1B3600D3A0BC /* todo.md */; };
 		3EBF1F7B1E07C6A900534A0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBF1F7A1E07C6A900534A0F /* AppDelegate.swift */; };
 		3EBF1F7D1E07C6A900534A0F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3EBF1F7C1E07C6A900534A0F /* GameScene.sks */; };
 		3EBF1F7F1E07C6A900534A0F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3EBF1F7E1E07C6A900534A0F /* Actions.sks */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E2322B71E0D26800066EED5 /* TouchoutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchoutScene.swift; sourceTree = "<group>"; };
+		3E2322B91E0D26B60066EED5 /* TouchoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchoutView.swift; sourceTree = "<group>"; };
+		3E7F6F471E0C1B3600D3A0BC /* todo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		3EBF1F771E07C6A900534A0F /* touchout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touchout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBF1F7A1E07C6A900534A0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EBF1F7C1E07C6A900534A0F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -50,6 +56,7 @@
 		3EBF1F6E1E07C6A900534A0F = {
 			isa = PBXGroup;
 			children = (
+				3E7F6F471E0C1B3600D3A0BC /* todo.md */,
 				3EBF1F791E07C6A900534A0F /* touchout */,
 				3EBF1F781E07C6A900534A0F /* Products */,
 			);
@@ -75,6 +82,7 @@
 				3EBF1F861E07C6A900534A0F /* Main.storyboard */,
 				3EBF1F891E07C6A900534A0F /* Info.plist */,
 				3ED0D4831E0AA92E00ACA851 /* TouchBarIdentifiers.swift */,
+				3E2322B91E0D26B60066EED5 /* TouchoutView.swift */,
 			);
 			path = touchout;
 			sourceTree = "<group>";
@@ -86,6 +94,7 @@
 				3EBF1F801E07C6A900534A0F /* GameScene.swift */,
 				3EE748311E091A940074A1C2 /* MenuScene.sks */,
 				3EE748331E091AB30074A1C2 /* MenuScene.swift */,
+				3E2322B71E0D26800066EED5 /* TouchoutScene.swift */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -167,9 +176,12 @@
 				3EBF1F831E07C6A900534A0F /* ViewController.swift in Sources */,
 				3ED0D4821E0AA5C100ACA851 /* WindowController.swift in Sources */,
 				3EE748341E091AB30074A1C2 /* MenuScene.swift in Sources */,
+				3E2322BA1E0D26B60066EED5 /* TouchoutView.swift in Sources */,
 				3EBF1F811E07C6A900534A0F /* GameScene.swift in Sources */,
 				3ED0D4841E0AA92E00ACA851 /* TouchBarIdentifiers.swift in Sources */,
 				3EBF1F7B1E07C6A900534A0F /* AppDelegate.swift in Sources */,
+				3E7F6F481E0C1B3600D3A0BC /* todo.md in Sources */,
+				3E2322B81E0D26800066EED5 /* TouchoutScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +296,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = touchout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.storiesGameStudio.touchout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -297,6 +310,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = touchout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.storiesGameStudio.touchout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

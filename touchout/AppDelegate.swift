@@ -9,14 +9,13 @@
 
 import Cocoa
 
+@available(OSX 10.12.2, *)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // init touchbar
-        if #available(OSX 10.12.2, *) {
-            NSApplication.shared().isAutomaticCustomizeTouchBarMenuItemEnabled = true
-        }
+        NSApplication.shared().isAutomaticCustomizeTouchBarMenuItemEnabled = true
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

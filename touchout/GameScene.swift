@@ -3,6 +3,7 @@
 import SpriteKit
 //import GameplayKit
 
+@available(OSX 10.12.2, *)
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     private struct CategoriesStruct {
@@ -114,7 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.borderNode?.physicsBody?.categoryBitMask = Categories.border
         self.paddleNode?.physicsBody?.categoryBitMask = Categories.paddle
         self.abyssNode?.physicsBody?.categoryBitMask = Categories.abyss
-        
+      
         self.ballNode?.physicsBody?.collisionBitMask = Categories.border | Categories.paddle | Categories.abyss
         self.ballNode?.physicsBody?.contactTestBitMask = Categories.abyss
     }
@@ -153,9 +154,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.isPaused = true
         }
     }
-    
-//    override func update(_ currentTime: TimeInterval) {
-//        print("update")
-//    }
 
+    func handleSliderOnTouch(sender: NSSliderTouchBarItem) {
+        let sliderValue = sender.slider.doubleValue
+        // TODO
+        let projectedPosX = sliderValue * Double(WIDTH) - Double(WIDTH / 2)
+        self.paddleNode?.position.x = CGFloat(projectedPosX)
+    }
+    
+    //    override func update(_ currentTime: TimeInterval) {
+    //        print("update")
+    //    }
 }

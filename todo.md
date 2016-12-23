@@ -1,0 +1,20 @@
+- v0.1
+    - [x] basic touchbar
+    - proper size & location
+- v0.2
+    - bricks
+        - spawning
+        - effect
+        - buff
+- v0.3
+    - paddle
+- v0.4
+    - multiple levels
+- v0.5
+    - assets
+- later
+    - more touchbar effects
+- always
+    - proper code organization: module, protocol, etc.
+    - proper event handling
+    - proper touchbar composition
