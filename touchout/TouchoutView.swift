@@ -3,7 +3,7 @@ import SpriteKit
 @available(OSX 10.12.2, *)
 class TouchoutView: SKView {
   // NOTE self-maintained currentScene, since the `scene` will not be updated during `makeTouchyBar`
-  public var currentScene: SKScene?
+  public var currentScene: TouchoutScene?
   public var menuScene: MenuScene?
   public var gameScene: GameScene?
   
@@ -18,7 +18,7 @@ class TouchoutView: SKView {
     return nil
   }
   
-  func switchScene(scene: SKScene, transition: SKTransition?){
+  func switchScene(scene: TouchoutScene, transition: SKTransition?){
     NSLog("switching scene")
     var aTransition = transition
     if aTransition == nil {

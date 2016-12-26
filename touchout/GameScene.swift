@@ -4,7 +4,7 @@ import SpriteKit
 //import GameplayKit
 
 @available(OSX 10.12.2, *)
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: TouchoutScene, SKPhysicsContactDelegate {
 
     private struct CategoriesStruct {
         let ball : UInt32 = 0b1 << 0
@@ -165,4 +165,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //    override func update(_ currentTime: TimeInterval) {
     //        print("update")
     //    }
+}
+
+// touchbar related
+@available(OSX 10.12.2, *)
+extension GameScene {
+  override func buildTouchBar() -> NSTouchBar {
+    let touchBar = NSTouchBar()
+    touchBar.delegate = self
+    touchBar.customizationIdentifier = .gameBar
+    touchBar.defaultItemIdentifiers = [.titleSpan, .gamePaddleSlider]
+    touchBar.customizationAllowedItemIdentifiers = [.titleSpan, .gamePaddleSlider]
+    touchBar.principalItemIdentifier = .gamePaddleSlider
+    return touchBar
+  }
+
+  func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+    switch identifier {
+    case NSTouchBarItemIdentifier.gamePaddleSlider:
+      // TODO style
+      let item = NSSliderTouchBarItem(identifier: identifier)
+      let slider = NSSlider(target: nil, action: nil)
+      slider.isContinuous = true
+      item.slider = slider
+      item.label = "Paddle"
+      item.target = self
+      item.action = #selector(handleSliderOnTouch)
+      return item
+    default:
+      return nil
+    }
+  }
 }
